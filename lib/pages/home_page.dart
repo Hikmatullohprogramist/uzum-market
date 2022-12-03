@@ -1,11 +1,28 @@
 import 'package:flutter/material.dart';
 
-
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+        title: Container(
+          height: 50,
+          child: TextField(
+            decoration: InputDecoration(
+              border: OutlineInputBorder(),
+              hintText: 'O`zingizga yoqqan tovarlarni qidiring',
+              prefixIcon: Icon(Icons.search),
+            ),
+          ),
+        ),
+      ),
+      body: Center(
+        child: Text("Home Page"),
+      ),
+    );
   }
 }

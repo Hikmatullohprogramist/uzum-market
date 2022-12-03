@@ -14,7 +14,7 @@ void main() {
 class MyApp extends StatelessWidget {
   MyApp({Key? key}) : super(key: key);
   int _currentindex = 0;
-  final List <Widget> _pages = [
+  final List<Widget> _pages = [
     HomePage(),
     Search_Page(),
     Sell_Page(),
@@ -26,7 +26,21 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        appBar: AppBar(),
+        backgroundColor: Colors.amber,
+        appBar: AppBar(
+          elevation: 0,
+          backgroundColor: Colors.transparent,
+          title: Container(
+            height: 50,
+            child: TextField(
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                hintText: 'O`zingizga yoqqan tovarlarni qidiring',
+                prefixIcon: Icon(Icons.search),
+              ),
+            ),
+          ),
+        ),
         bottomNavigationBar: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
           currentIndex: _currentindex,

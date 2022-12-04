@@ -44,7 +44,6 @@ class _MyAppState extends State<MyApp> {
         primarySwatch: Colors.deepPurple,
       ),
       home: Scaffold(
-          backgroundColor: Colors.amber,
           bottomNavigationBar: BottomNavigationBar(
             type: BottomNavigationBarType.fixed,
             currentIndex: _currentindex,

@@ -5,24 +5,55 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Colors.transparent,
-        title: Container(
-          decoration: BoxDecoration(borderRadius: BorderRadius.circular(15)),
-          height: 50,
-          child: TextField(
-            decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                hintText: 'O`zingizga yoqqan tovarlarni qidiring',
-                prefixIcon: Icon(Icons.search),
-                fillColor: Colors.grey),
+    return SingleChildScrollView(
+      child: Scaffold(
+        appBar: AppBar(
+          elevation: 0,
+          backgroundColor: Colors.transparent,
+          title: Container(
+            decoration: BoxDecoration(borderRadius: BorderRadius.circular(15)),
+            height: 50,
+            child: TextField(
+              decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  hintText: 'O`zingizga yoqqan tovarlarni qidiring',
+                  prefixIcon: Icon(Icons.search),
+                  fillColor: Colors.grey),
+            ),
           ),
         ),
-      ),
-      body: Center(
-        child: Text("Home Page"),
+        body: GridView(
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            childAspectRatio: 1 / 2,
+          ),
+          children: [
+            Container(
+              color: Colors.red,
+              width: 200,
+              height: 100,
+              child: Text("data1"),
+            ),
+            Container(
+              color: Colors.red,
+              width: 200,
+              height: 100,
+              child: Text("data1"),
+            ),
+            Container(
+              color: Colors.red,
+              width: 200,
+              height: 100,
+              child: Text("data1"),
+            ),
+            Container(
+              color: Colors.red,
+              width: 200,
+              height: 100,
+              child: Text("data1"),
+            ),
+          ],
+        ),
       ),
     );
   }

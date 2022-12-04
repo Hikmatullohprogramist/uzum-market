@@ -1,12 +1,41 @@
-import 'package:flutter/material.dart';
+// ignore_for_file: avoid_unnecessary_containers
 
-class HomePage extends StatelessWidget {
+import 'package:flutter/material.dart';
+import 'package:flutter/physics.dart';
+import 'package:uzum_clone/data/product_model.dart';
+import 'package:uzum_clone/data/service.dart';
+import 'package:uzum_clone/widgets/product_grid.dart';
+
+class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
   @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  List<Products>? products;
+  var isLoaded = false;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getData();
+  }
+
+  getData() async {
+    products = await getAllProducts().getProducts();
+    if (products != Null) {
+      setState(() {
+        isLoaded = true;
+      });
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Scaffold(
+    return Scaffold(
         appBar: AppBar(
           elevation: 0,
           backgroundColor: Colors.transparent,
@@ -22,39 +51,27 @@ class HomePage extends StatelessWidget {
             ),
           ),
         ),
-        body: GridView(
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            childAspectRatio: 1 / 2,
+        body: Visibility(
+          visible: isLoaded,
+          replacement: const Center(
+            child: CircularProgressIndicator(),
           ),
-          children: [
-            Container(
-              color: Colors.red,
-              width: 200,
-              height: 100,
-              child: Text("data1"),
-            ),
-            Container(
-              color: Colors.red,
-              width: 200,
-              height: 100,
-              child: Text("data1"),
-            ),
-            Container(
-              color: Colors.red,
-              width: 200,
-              height: 100,
-              child: Text("data1"),
-            ),
-            Container(
-              color: Colors.red,
-              width: 200,
-              height: 100,
-              child: Text("data1"),
-            ),
-          ],
-        ),
-      ),
-    );
+          child: GridView.builder(
+              padding: EdgeInsets.all(10.0),
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                childAspectRatio: 3 / 2,
+                crossAxisSpacing: 10,
+                mainAxisSpacing: 10,
+              ),
+              itemCount: products?.length,
+              itemBuilder: (context, index) {
+                return ProductGrid(
+                  id: products![index].id,
+                  image: products![index].image,
+                  title: products![index].title,
+                );
+              }),
+        ));
   }
 }

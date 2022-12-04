@@ -10,13 +10,14 @@ class HomePage extends StatelessWidget {
         elevation: 0,
         backgroundColor: Colors.transparent,
         title: Container(
+          decoration: BoxDecoration(borderRadius: BorderRadius.circular(15)),
           height: 50,
           child: TextField(
             decoration: InputDecoration(
-              border: OutlineInputBorder(),
-              hintText: 'O`zingizga yoqqan tovarlarni qidiring',
-              prefixIcon: Icon(Icons.search),
-            ),
+                border: OutlineInputBorder(),
+                hintText: 'O`zingizga yoqqan tovarlarni qidiring',
+                prefixIcon: Icon(Icons.search),
+                fillColor: Colors.grey),
           ),
         ),
       ),
